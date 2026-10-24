@@ -4,7 +4,7 @@
  */
 package logica;
 
-import modelo.*; //Importar las clases del paquete modelo
+import modelo.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -19,6 +19,22 @@ public class Biblioteca {
         this.prestamosActivos = new ArrayList<>();
     }
 
+    public MaterialBibliografico buscarMaterialRecursivo(String codigo, int indice) {
+        if (indice >= inventario.size()) {
+            return null;
+        }
+        if (inventario.get(indice).getCodigo().equals(codigo)) {
+            return inventario.get(indice);
+        }
+        return buscarMaterialRecursivo(codigo, indice + 1);
+    }
 
+    public boolean registrarMaterial(MaterialBibliografico material) {
+        if (buscarMaterialRecursivo(material.getCodigo(), 0) != null) {
+            return false;
+        }
+        inventario.add(material);
+        return true;
+    }
 
 }
