@@ -4,10 +4,21 @@
  */
 package logica;
 
-/**
- *
- * @author USUARIO
- */
+import modelo.*; //Importar las clases del paquete modelo
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 public class Biblioteca {
-    
+
+    private List<MaterialBibliografico> inventario;
+    private List<Prestamo> prestamosActivos;
+
+    public Biblioteca() {
+        this.inventario = new ArrayList<>();
+        this.prestamosActivos = new ArrayList<>();
+    }
+
+
+
 }
